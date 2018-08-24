@@ -4,8 +4,8 @@ import Strapi from 'strapi-sdk-javascript/build/main';
 import ProductList from '../components/productlist';
 
 class App extends React.Component {
-  constructor(props)  {
-    super(props);
+  constructor()  {
+    super();
     this.state = {
       productLists : {},
       productItems : []
