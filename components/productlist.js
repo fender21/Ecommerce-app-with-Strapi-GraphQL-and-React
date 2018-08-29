@@ -34,10 +34,12 @@ export default class ProductList extends React.Component {
    state = {
      cart:[]
    }
+
   _handleCart = (items) => {
     return (
       this.setState({
-        cart:this.state.cart.concat(items)
+        cart:this.state.cart.concat(items),
+
       })
     );
 
@@ -49,7 +51,9 @@ export default class ProductList extends React.Component {
 
     return(
       <div style={root} className="container">
-        <div className="well">Cart: {this.state.cart.map(row => row.name)}</div>
+        <div className="well"><h4>Cart:</h4> {this.state.cart.map(row => [
+          <p>{`Product Name: ${row.name} | Price ${row.price}`}</p>,
+        ] )}</div>
         {items.map(product => {
           return (
           <div key={product['id']}  className="col-md-4">
