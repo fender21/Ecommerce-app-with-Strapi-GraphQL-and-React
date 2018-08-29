@@ -3,6 +3,7 @@ import ProductList from '../components/productlist';
 import Layout from '../components/Layout';
 
 const strapi = new Strapi('http://localhost:1337');
+
 const Home = ({ products }) => (
   <Layout title="Store Home">
 

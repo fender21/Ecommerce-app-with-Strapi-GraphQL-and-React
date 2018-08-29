@@ -30,21 +30,42 @@ const button= {
   float:'right'
 }
 
-const ProductList = ({ items, handleCart }) => (
-
-  <div style={root}>
-    {items.map(product => {
-      return (
-      <div key={product['id']} style={box}>
-          <img src={`http://localhost:1337/`+product['image']['url']} style={img}/>
-          <p style={productName}>{product['name']} </p>
-          <p style={price}>{'$'+product['price']} </p>
-          <AddToCart product={product} />
-
-      </div>
+export default class ProductList extends React.Component {
+   state = {
+     cart:[]
+   }
+  _handleCart = (items) => {
+    return (
+      this.setState({
+        cart:this.state.cart.concat(items)
+      })
     );
-    })}
-</div>
-);
 
-export default ProductList;
+  }
+
+  render() {
+    const items = this.props.items;
+    console.log(this.state.cart)
+
+    return(
+      <div style={root} className="container">
+        <div className="well">Cart: {this.state.cart.map(row => row.name)}</div>
+        {items.map(product => {
+          return (
+          <div key={product['id']}  className="col-md-4">
+              <img src={`http://localhost:1337/`+product['image']['url']} style={img}/>
+              <p style={productName}>{product['name']} </p>
+              <p style={price}>{'$'+product['price']} </p>
+              <input
+                type="button"
+                className="btn btn-primary"
+                value="Add to cart"
+                onClick={this._handleCart.bind(this,product)}
+              />
+          </div>
+        );
+        })}
+    </div>
+    );
+  }
+}
