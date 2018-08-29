@@ -1,26 +1,10 @@
-import React from 'react';
 import Strapi from 'strapi-sdk-javascript/build/main';
 
-import ProductList from '../components/productlist';
+const strapi = new Strapi('http://localhost:1337');
+const Home = ({ products }) => <pre>{JSON.stringify(products, '\t', 2)}</pre>
 
-class App extends React.Component {
-  constructor()  {
-    super();
-    this.state = {
-      productLists : {},
-      productItems : []
-    }
-    this.fetchProducts = this.fetchProducts.bind(this);
-    this.addToCart = this.addToCart.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchProducts();
-  }
-
-async fetchProducts() {
-  const strapi = new Strapi('http://localhost:1337');
-  const response = await strapi.request('post', '/graphql', {
+Home.getInitialProps = async () => {
+  const products = await strapi.request('post', '/graphql', {
     data: {
       query: `query {
           products {
@@ -36,27 +20,12 @@ async fetchProducts() {
         `
     }
   })
-  const productLists = response.data;
 
-  let allProducts = Object.entries(productLists);
-  for (const items of allProducts) {
-    let productItems = items[1];
-    this.setState({productItems})
+  return {
+    products
   }
+  console.log('pro', products);
 
 }
 
-addToCart(e) {
-  console.log(e);
-}
-
-  render() {
-    return (
-      <div>
-        <ProductList items={this.state.productItems} addToCart={this.addToCart}/>
-      </div>
-    )
-  }
-}
-
-export default App;
+export default Home;
