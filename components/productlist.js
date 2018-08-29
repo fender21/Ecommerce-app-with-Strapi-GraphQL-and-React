@@ -1,7 +1,5 @@
-import React from 'react'
 
 const root = {
-  margin:'150px',
   width: '100%'
 };
 const box = {
@@ -32,14 +30,14 @@ const button= {
   float:'right'
 }
 
-const ProductList = ({ items, addToCart }) => (
+const ProductList = ({ items }) => (
 
   <div style={root}>
     {items.map(product => {
       return (
       <div key={product['id']} style={box}>
           <img src={`http://localhost:1337/`+product['image']['url']} style={img}/>
-          <p style={productName}>{product['name']} <button style={button} onClick={addToCart(product['name'])}>Add to Cart</button></p>
+          <p style={productName}>{product['name']} <button style={button} >Add to Cart</button></p>
           <p style={price}>{'$'+product['price']} </p>
 
       </div>
