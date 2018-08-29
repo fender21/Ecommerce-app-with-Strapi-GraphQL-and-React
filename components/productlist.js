@@ -1,4 +1,4 @@
-
+import AddToCart from './AddToCart';
 const root = {
   width: '100%'
 };
@@ -30,15 +30,16 @@ const button= {
   float:'right'
 }
 
-const ProductList = ({ items }) => (
+const ProductList = ({ items, handleCart }) => (
 
   <div style={root}>
     {items.map(product => {
       return (
       <div key={product['id']} style={box}>
           <img src={`http://localhost:1337/`+product['image']['url']} style={img}/>
-          <p style={productName}>{product['name']} <button style={button} >Add to Cart</button></p>
+          <p style={productName}>{product['name']} </p>
           <p style={price}>{'$'+product['price']} </p>
+          <AddToCart product={product} />
 
       </div>
     );

@@ -5,8 +5,6 @@ import Layout from '../components/Layout';
 const strapi = new Strapi('http://localhost:1337');
 const Home = ({ products }) => (
   <Layout title="Store Home">
-    {/* <pre>{JSON.stringify(products, '\t', 2)}</pre> */}
-    {console.log('pro', products.data.products)}
 
     <ProductList items={products.data.products} />
   </Layout>
