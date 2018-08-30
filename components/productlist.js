@@ -39,11 +39,9 @@ export default class ProductList extends React.Component {
   _handleCart = (items) => {
     return (
       this.setState({
-        cart:this.state.cart.concat(items),
-
+        cart:this.state.cart.concat(items)
       })
     );
-
   }
 
   render() {
