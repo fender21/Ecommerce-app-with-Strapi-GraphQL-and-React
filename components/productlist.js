@@ -1,4 +1,3 @@
-import AddToCart from './AddToCart';
 const root = {
   width: '100%'
 };
@@ -47,13 +46,12 @@ export default class ProductList extends React.Component {
 
   render() {
     const items = this.props.items;
-    console.log(this.state.cart)
-
     return(
       <div style={root} className="container">
         <div className="well"><h4>Cart:</h4> {this.state.cart.map(row => [
-          <p>{`Product Name: ${row.name} | Price ${row.price}`}</p>,
-        ] )}</div>
+          <p>{`Product Name: ${row.name} | Price $${row.price.toFixed(2)}`}</p>,
+        ] )}
+      </div>
         {items.map(product => {
           return (
           <div key={product['id']}  className="col-md-4">
