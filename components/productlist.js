@@ -3,11 +3,7 @@ import Cart from './Cart';
 const root = {
   width: '100%'
 };
-const box = {
-  width: '30%',
-  marginRight: '1px',
-  float:'left'
-}
+
 const img ={
   width:'250px',
   height:'200px',
@@ -28,7 +24,8 @@ const productName = {
 }
 
 const button= {
-  float:'right'
+  marginBottom:'20px',
+  width:'80%'
 }
 
 export default class ProductList extends React.Component {
@@ -60,6 +57,7 @@ export default class ProductList extends React.Component {
                 className="btn btn-primary"
                 value="Add to cart"
                 onClick={this._handleCart.bind(this,product)}
+                style={button}
               />
           </div>
         );
