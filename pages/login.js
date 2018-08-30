@@ -34,8 +34,7 @@ class Login extends React.Component {
   async handleSubmit() {
     try {
       const me = await strapi.login(this.state.username, this.state.password);
-      console.log(me.user.role.type)
-    //  Router.push('/')
+      Router.push('/')
     }
     catch(err) {
       console.log(err);
