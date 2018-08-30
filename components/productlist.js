@@ -1,3 +1,5 @@
+import Cart from './Cart';
+
 const root = {
   width: '100%'
 };
@@ -48,13 +50,10 @@ export default class ProductList extends React.Component {
     const items = this.props.items;
     return(
       <div style={root} className="container">
-        <div className="well"><h4>Cart:</h4> {this.state.cart.map(row => [
-          <p>{`Product Name: ${row.name} | Price $${row.price.toFixed(2)}`}</p>,
-        ] )}
-      </div>
+        <Cart cart={this.state.cart} />
         {items.map(product => {
           return (
-          <div key={product['id']}  className="col-md-4">
+          <div key={product['_id']}  className="col-md-4">
               <img src={`http://localhost:1337/`+product['image']['url']} style={img}/>
               <p style={productName}>{product['name']} </p>
               <p style={price}>{'$'+product['price']} </p>
