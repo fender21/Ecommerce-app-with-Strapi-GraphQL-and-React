@@ -6,7 +6,6 @@ const strapi = new Strapi('http://localhost:1337');
 
 const Home = ({ products }) => (
   <Layout title="Store Home">
-
     <ProductList items={products.data.products} />
   </Layout>
 )

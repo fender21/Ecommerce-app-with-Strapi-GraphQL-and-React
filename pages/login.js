@@ -5,18 +5,16 @@ import Layout from '../components/Layout';
 
 const strapi = new Strapi('http://localhost:1337');
 
-class Registration extends React.Component {
+class Login extends React.Component {
   constructor() {
     super();
     this.state = {
       username: '',
-      password: '',
-      email: ''
-     };
+      password: ''
+    };
 
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -32,20 +30,12 @@ class Registration extends React.Component {
     });
   }
 
-  handleEmail(event) {
-    this.setState({
-      email: event.target.value
-    })
-  }
-
-
 
   async handleSubmit() {
     try {
-
-      await strapi.register(this.state.username,    this.state.email,this.state.password);
-      alert('Registration was submitted');
-      Router.push('/login')
+      const me = await strapi.login(this.state.username, this.state.password);
+      console.log(me.user.role.type)
+    //  Router.push('/')
     }
     catch(err) {
       console.log(err);
@@ -54,10 +44,10 @@ class Registration extends React.Component {
 
   render() {
     return (
-      <Layout title="User Registration">
+      <Layout title="Login">
         <div className="col-md-4 col-md-offset-4">
           <header>
-            <h3>User Registration</h3>
+            <h3>User Login</h3>
           </header>
             <div className="form-group">
               <label>
@@ -65,12 +55,7 @@ class Registration extends React.Component {
                 <input type="text" value={this.state.username} onChange={this.handleUsername} className="form-control"/>
               </label>
             </div>
-            <div className="form-group">
-              <label>
-                Email:
-                <input type="email" value={this.state.email} onChange={this.handleEmail} className="form-control"/>
-              </label>
-            </div>
+
             <div className="form-group">
               <label>
                 Password:
@@ -86,4 +71,4 @@ class Registration extends React.Component {
   }
 }
 
-export default Registration;
+export default Login;

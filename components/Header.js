@@ -7,10 +7,9 @@ const Header = () => (
       <Link  passHref prefetch href='/'><a className="navbar-brand">WebSiteName</a></Link>
     </div>
     <ul className="nav navbar-nav">
-      <li><Link  passHref prefetch href='/'><a>Home</a></Link></li>
+      <li><Link  href='/'><a>Home</a></Link></li>
       <li><Link  passHref prefetch href='/registration'><a>Register</a></Link></li>
-      <li><Link  passHref prefetch href='/'><a>Page 2</a></Link></li>
-      <li><Link  passHref prefetch href='/'><a>Page 3</a></Link></li>
+      <li><Link  passHref prefetch href='/login'><a>Login</a></Link></li>
     </ul>
   </div>
 </nav>
