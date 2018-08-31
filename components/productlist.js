@@ -1,33 +1,5 @@
 import Cart from './Cart';
 
-const root = {
-  width: '100%'
-};
-
-const img ={
-  width:'250px',
-  height:'200px',
-  padding:'5px',
-  border:'3px solid #ddd'
-}
-
-const price = {
-  color:'red',
-  textAlign:'center',
-  width: '70%',
-  marginTop:'-10px'
-}
-
-const productName = {
-  textAlign:'center',
-  width: '60%',
-}
-
-const button= {
-  marginBottom:'20px',
-  width:'80%'
-}
-
 export default class ProductList extends React.Component {
    state = {
      cart:[]
@@ -65,4 +37,32 @@ export default class ProductList extends React.Component {
     </div>
     );
   }
+}
+
+const root = {
+  width: '100%'
+};
+
+const img ={
+  width:'250px',
+  height:'200px',
+  padding:'5px',
+  border:'3px solid #ddd'
+}
+
+const price = {
+  color:'red',
+  textAlign:'center',
+  width: '70%',
+  marginTop:'-10px'
+}
+
+const productName = {
+  textAlign:'center',
+  width: '60%',
+}
+
+const button= {
+  marginBottom:'20px',
+  width:'80%'
 }

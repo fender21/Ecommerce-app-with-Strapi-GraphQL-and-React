@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import {cart} from './Cart'
 
 const Header = () => (
   <nav className="navbar navbar-default">
@@ -11,7 +10,6 @@ const Header = () => (
       <li><Link  href='/'><a>Home</a></Link></li>
       <li><Link  passHref prefetch href='/registration'><a>Register</a></Link></li>
       <li><Link  passHref prefetch href='/login'><a>Login</a></Link></li>
-      <pre>{cart}</pre>
     </ul>
   </div>
 </nav>

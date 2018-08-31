@@ -6,9 +6,8 @@ const Cart = ({cart}) => (
     <h4>Cart:</h4>
     {cart == '' ? 'Please select an Item:' : cart.map(row => {
       sum += row.price;
-      const selectedProducts = localStorage.setItem('products', row);
        return (
-         <div>
+         <div key={row._id}>
             <p>{`Product Name: ${row.name} | Price $${row.price.toFixed(2)}`}</p>
         </div>
 
