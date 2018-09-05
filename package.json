@@ -14,6 +14,9 @@
     "next": "^6.1.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "strapi-sdk-javascript": "^0.2.1"
+    "react-stripe-elements": "^2.0.1",
+    "strapi-sdk-javascript": "^0.2.1",
+    "stripe": "^6.8.0",
+    "universal-cookie": "^3.0.4"
   }
 }

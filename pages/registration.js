@@ -43,12 +43,14 @@ class Registration extends React.Component {
   async handleSubmit() {
     try {
 
-      await strapi.register(this.state.username,    this.state.email,this.state.password);
+      await strapi.register(this.state.username,this.state.email,this.state.password);
       alert('Registration was submitted');
       Router.push('/login')
     }
     catch(err) {
       console.log(err);
+      alert(" User email already existed");
+
     }
   }
 

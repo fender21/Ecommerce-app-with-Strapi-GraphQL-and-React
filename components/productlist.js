@@ -1,9 +1,15 @@
 import Cart from './Cart';
+import Cookies from 'universal-cookie';
+const cookies = new Cookies();
 
 export default class ProductList extends React.Component {
-   state = {
-     cart:[]
-   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      cart:[] || props.checkoutItems
+    }
+
+  }
 
   _handleCart = (items) => {
     return (
@@ -11,10 +17,14 @@ export default class ProductList extends React.Component {
         cart:this.state.cart.concat(items)
       })
     );
+
   }
 
   render() {
     const items = this.props.items;
+    cookies.set('allCart', this.state.cart, { path: '/' });
+    console.log(this.props.checkoutItems);
+
     return(
       <div style={root} className="container">
         <Cart cart={this.state.cart} />
