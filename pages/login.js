@@ -1,9 +1,12 @@
 import Strapi from 'strapi-sdk-javascript/build/main';
-import Router from 'next/router'
+import Router from 'next/router';
+import Cookies from 'universal-cookie';
+
 
 import Layout from '../components/Layout';
 
 const strapi = new Strapi('http://localhost:1337');
+const cookies = new Cookies()
 
 class Login extends React.Component {
   constructor() {
@@ -33,7 +36,10 @@ class Login extends React.Component {
 
   async handleSubmit() {
     try {
-      const me = await strapi.login(this.state.username, this.state.password);
+      const response = await strapi.login(this.state.username, this.state.password);
+      const email = response.user.email
+      console.log(email)
+      cookies.set('email', email, { path: '/' });
       Router.push('/')
     }
     catch(err) {

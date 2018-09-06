@@ -1,5 +1,9 @@
 import Link from 'next/link';
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
+const email = cookies.get('email');
+console.log(email)
 const Header = () => (
   <nav className="navbar navbar-default">
   <div className="container-fluid">
@@ -9,7 +13,8 @@ const Header = () => (
     <ul className="nav navbar-nav">
       <li><Link  href='/'><a>Home</a></Link></li>
       <li><Link  passHref prefetch href='/registration'><a>Register</a></Link></li>
-      <li><Link  passHref prefetch href='/login'><a>Login</a></Link></li>
+      {email ? <li><Link  passHref prefetch href='/logout'><a>Logout</a></Link></li>:
+      <li><Link  passHref prefetch href='/login'><a>Login</a></Link></li> }
     </ul>
   </div>
 </nav>
