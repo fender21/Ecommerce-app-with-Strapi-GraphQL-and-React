@@ -6,7 +6,7 @@ export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cart:[] || cookies.get('allCart')
+      cart:[] || this.props.items
     }
 
   }
@@ -26,6 +26,7 @@ export default class ProductList extends React.Component {
     console.log(this.state.cart);
     return(
       <div style={root} className="container">
+        <Cart cart={this.state.cart} />
         {items.map(product => {
           return (
           <div key={product['_id']}  className="col-md-4">
