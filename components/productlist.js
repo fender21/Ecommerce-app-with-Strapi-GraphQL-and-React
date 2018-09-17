@@ -6,7 +6,7 @@ export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cart:[] || this.props.items
+      cart:[]
     }
 
   }
